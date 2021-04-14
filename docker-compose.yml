@@ -5,9 +5,6 @@ services:
       context: docker/php-fpm
     volumes:
       - ./:/var/www
-    environment:
-      XDEBUG_CONFIG: "remote_host=host.docker.internal remote_enable=1"
-      PHP_IDE_CONFIG: "serverName=Docker"
     networks:
       - internal
   nginx:
@@ -23,8 +20,3 @@ services:
       - internal
 networks:
   internal:
-    driver: bridge
-    ipam:
-      driver: default
-      config:
-        - subnet: 192.168.220.0/28
